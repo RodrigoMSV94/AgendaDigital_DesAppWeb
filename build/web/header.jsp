@@ -13,7 +13,6 @@
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -39,8 +38,9 @@
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit"><i
-                            class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
                 </form>
             </div>
         </div>

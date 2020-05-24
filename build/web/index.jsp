@@ -25,7 +25,7 @@
     <body>
         <%@include file="header.jsp" %>
         
-        <%@include file="bienvenida.jsp" %>
+        <%@include file="agenda.jsp" %>
         
         <%@include file="footer.jsp" %>
     </body>
