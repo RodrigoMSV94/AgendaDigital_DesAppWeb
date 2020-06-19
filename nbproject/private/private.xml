@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/header.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/footer.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/agenda.jsp</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaAlumnos.jsp</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/AlumnoController.java</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/formAlumno.jsp</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

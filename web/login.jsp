@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.colegio.model.Perfil"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,26 +26,41 @@
                     <div class="col-12 user-img">
                         <img src="Content/img/login-avatar.png" alt="">
                     </div>
-                    <form action="" class="col-12">
+                    <form action="LoginController" class="col-12" method="post">
                         <div class="form-group" >
-                            <select class="browser-default custom-select " id="select-group">
-
-                                <option value="1" selected>Alumno</option>
-                                <option value="2">Docente</option>
-                                <option value="3">Administrativo</option>
+                            <%
+                                //List<Perfil> listaPerfiles = (List<Perfil>) request.getAttribute("listaPerfiles");
+                                
+                                List<Perfil> listaPerfiles = (List<Perfil>) session.getAttribute("listaPerfiles"); 
+                            %>
+                            <select class="browser-default custom-select " id="select-group" name="idPerfilUsu">
+                                <%
+                                    for (Perfil objPerfil : listaPerfiles) {
+                                %>
+                                <option value="<%=objPerfil.getId_perfil()%>" selected><%=objPerfil.getTipo()%></option>
+                                <%
+                                    }
+                                %>
                             </select>
                         </div>
                         <div class="form-group" id="user-group">
-                            <input type="text" class="form-control" placeholder="Correo electrónico">
+                            <input type="text" class="form-control" name="txtCorreo" placeholder="Correo electrónico">
                         </div>
                         <div class="form-group" id="contrasena-group">
-                            <input type="password" class="form-control" placeholder="Contraseña">
+                            <input type="password" class="form-control" name="txtContrasena" placeholder="Contraseña">
                         </div>
                         <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
                     </form>
-                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
-                        Correo o contraseña invalido.
-                    </div>
+                    
+                    <%
+                    if(request.getAttribute("respuesta") != null){
+                    %>
+                        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                            Correo o contraseña invalido.
+                        </div>
+                    <%
+                    }
+                    %>
                 </div>
             </div>
         </div>

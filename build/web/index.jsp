@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 22-may-2020, 22:38:11
-    Author     : Rodrigo_Serrano
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
