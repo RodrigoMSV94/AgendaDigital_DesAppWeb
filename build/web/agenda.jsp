@@ -28,7 +28,19 @@
                     <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
                             Fecha de consulta:
-                            <input type="Date" class="form-control" id="txtFechConsulta" name="txtFechConsulta" required>
+                            <%
+                            if(request.getAttribute("fecha_consulta") != null){
+                                String fecha_consulta = request.getAttribute("fecha_consulta").toString();
+                            %>
+                                <input type="Date" class="form-control" id="txtFechConsulta" name="txtFechConsulta" value="<%=fecha_consulta%>">    
+                            <%
+                            } else {  
+                                
+                            %>
+                                <input type="Date" class="form-control" id="txtFechConsulta" name="txtFechConsulta" required>
+                            <%
+                            }    
+                            %>
                         </div>
                         <div class="col-auto my-1 ml-auto">
                             <button type="submit" class="btn btn-dark">

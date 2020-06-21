@@ -1,5 +1,5 @@
-<%@page import="com.colegio.model.Incidencia"%>
-<%@page import="com.colegio.model.Tarea"%>
+<%@page import="java.util.List"%>
+<%@page import="com.colegio.model.Citacion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <br>
-                <form action="AgendaController" method="post">
+                <form action="CitacionController" method="post">
                     <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
                             Fecha de consulta:
@@ -50,54 +50,42 @@
                     </div>
                 </form>
                 <br>
-                <div class="card">
-                    <div class="card-header">
-                        TAREAS EN LOS CURSOS:
-                    </div>
-                    <div class="card-body">
-                        <%
-                        List<Tarea> listaTareasGrado = (List<Tarea>) request.getAttribute("listaTareasGrado");
-                            if(request.getAttribute("listaTareasGrado") != null){
-                                for (Tarea objTareaGrado : listaTareasGrado) {
-                        %>
-                            <h5 class="card-title">Curso: <%=objTareaGrado.getNomCurso()%></h5>
-                            <p class="card-text">Mensaje: <%=objTareaGrado.getDescripcion()%> </p>
-                            <%
-                            }
-                            %>
-                        <%    
-                        } else {
-                        %>
-                            <p class="card-text">No tiene tareas </p>
-                        <%    
-                        }
-                        %>
-                    </div>
-
-                </div>
+                <p class="card-text">Recordar que todas las citaciones son despues de clases </p>
                 <br>
-                <%
-                List<Incidencia> listaIncsAlumo = (List<Incidencia>) request.getAttribute("listaIncsAlumo");
-                    if(request.getAttribute("listaIncsAlumo") != null){
+                 <%
+                List<Citacion> listaCitasAlumno = (List<Citacion>) request.getAttribute("listaCitasAlumno");
+                    if(listaCitasAlumno.size() > 0){
                 %>
-                        <div class="card">
-                            <div class="card-header">
-                                INCIDENCIAS EN LOS CURSOS:
-                            </div>
-                            <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" class="text-center">Nombre Profesor</th>
+                                    <th scope="col" class="text-center">Apellido Profesor</th>
+                                    <th scope="col" class="text-center">Motivo</th>
+                                    <th scope="col" class="text-center">Fecha de Cita</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <%
-                                for (Incidencia objIncidenciaAlum : listaIncsAlumo) {
+                                    for (Citacion objCitacion : listaCitasAlumno) {
                                 %>
-                                    <h5 class="card-title">Curso: <%=objIncidenciaAlum.getNomCurso()%></h5>
-                                    <p class="card-text">Observación: <%=objIncidenciaAlum.getDescripcion()%> </p>
+                                <tr>
+                                    <td class="text-center"><%=objCitacion.getNomDocente()%></td>
+                                    <td class="text-center"><%=objCitacion.getApeDocente()%></td>
+                                    <td class="text-center"><%=objCitacion.getMotivo()%></td>
+                                    <th class="text-center"><%=objCitacion.getFecha_cita()%></th>
+                                </tr>
                                 <%
-                                }
+                                    }
                                 %>
-                            </div>
-                        </div>
-                        <br>
-                <%    
-                    } 
+                            </tbody>
+                        </table>
+                <%
+                    } else {
+                %>
+                        <p class="card-text">El alumno no tiene citaciones </p>
+                <%
+                    }
                 %>
                 <br>
             </div>

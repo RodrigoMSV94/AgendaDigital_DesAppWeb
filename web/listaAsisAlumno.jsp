@@ -1,5 +1,5 @@
-<%@page import="com.colegio.model.Incidencia"%>
-<%@page import="com.colegio.model.Tarea"%>
+<%@page import="com.colegio.model.Asistencia"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <br>
-                <form action="AgendaController" method="post">
+                <form action="AsistenciaAlumnoController" method="post">
                     <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
                             Fecha de consulta:
@@ -50,54 +50,54 @@
                     </div>
                 </form>
                 <br>
-                <div class="card">
-                    <div class="card-header">
-                        TAREAS EN LOS CURSOS:
-                    </div>
-                    <div class="card-body">
-                        <%
-                        List<Tarea> listaTareasGrado = (List<Tarea>) request.getAttribute("listaTareasGrado");
-                            if(request.getAttribute("listaTareasGrado") != null){
-                                for (Tarea objTareaGrado : listaTareasGrado) {
-                        %>
-                            <h5 class="card-title">Curso: <%=objTareaGrado.getNomCurso()%></h5>
-                            <p class="card-text">Mensaje: <%=objTareaGrado.getDescripcion()%> </p>
-                            <%
-                            }
-                            %>
-                        <%    
-                        } else {
-                        %>
-                            <p class="card-text">No tiene tareas </p>
-                        <%    
-                        }
-                        %>
-                    </div>
-
-                </div>
-                <br>
-                <%
-                List<Incidencia> listaIncsAlumo = (List<Incidencia>) request.getAttribute("listaIncsAlumo");
-                    if(request.getAttribute("listaIncsAlumo") != null){
+                 <%
+                List<Asistencia> listaAsisAlumno = (List<Asistencia>) request.getAttribute("listaAsisAlumno");
+                    if(request.getAttribute("listaAsisAlumno") != null){
+                        if(listaAsisAlumno.size() > 0){
                 %>
-                        <div class="card">
-                            <div class="card-header">
-                                INCIDENCIAS EN LOS CURSOS:
-                            </div>
-                            <div class="card-body">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" class="text-center">Curso</th>
+                                    <th scope="col" class="text-center">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <%
-                                for (Incidencia objIncidenciaAlum : listaIncsAlumo) {
+                                    for (Asistencia objAsistencia : listaAsisAlumno) {
                                 %>
-                                    <h5 class="card-title">Curso: <%=objIncidenciaAlum.getNomCurso()%></h5>
-                                    <p class="card-text">Observación: <%=objIncidenciaAlum.getDescripcion()%> </p>
+                                <tr>
+                                    <th class="text-center"><%=objAsistencia.getNomCurso()%></th>
+                                    <%
+                                    if(objAsistencia.getAsistio() == 1) {
+                                    %>    
+                                        <td class="text-center">Asistió</td>
+                                    <%
+                                    } else {
+                                    %>
+                                        <td class="text-center">No Asistió</td>
+                                    <%
+                                    } 
+                                    %>
+                                </tr>
                                 <%
-                                }
+                                    }
                                 %>
-                            </div>
-                        </div>
-                        <br>
-                <%    
-                    } 
+                            </tbody>
+                        </table>
+                    <%
+                        } else {
+                    %>
+                            <p class="card-text">No tienes registro de asistencia en esa fecha </p>
+                    <%
+                        }
+                    %>
+                <%
+                    } else {
+                %>
+                        <p class="card-text">Selecciona la fecha en la que desea ver sus asistencias </p>
+                <%
+                    }
                 %>
                 <br>
             </div>

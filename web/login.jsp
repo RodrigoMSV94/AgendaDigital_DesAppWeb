@@ -37,7 +37,7 @@
                                 <%
                                     for (Perfil objPerfil : listaPerfiles) {
                                 %>
-                                <option value="<%=objPerfil.getId_perfil()%>" selected><%=objPerfil.getTipo()%></option>
+                                <option value="<%=objPerfil.getId_perfil()%>"><%=objPerfil.getTipo()%></option>
                                 <%
                                     }
                                 %>
