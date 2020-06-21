@@ -1,3 +1,5 @@
+<%@page import="com.colegio.model.Incidencia"%>
+<%@page import="com.colegio.model.Tarea"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,23 +24,11 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <br>
-                <form>
-                    <div class="form-row justify-content-start">
+                <form action="AgendaController" method="post">
+                    <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
-                            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                <option value="1" selected>Marzo</option>
-                                <option value="2">Abril</option>
-                                <option value="3">Mayo</option>
-                            </select>
-                        </div>
-                        <div class="col-auto my-1">
-                            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            Fecha de consulta:
+                            <input type="Date" class="form-control" id="txtFechConsulta" name="txtFechConsulta" required>
                         </div>
                         <div class="col-auto my-1 ml-auto">
                             <button type="submit" class="btn btn-dark">
@@ -53,40 +43,54 @@
                         TAREAS EN LOS CURSOS:
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Curso:</h5>
-                        <p class="card-text">Nota: </p>
+                        <%
+                        List<Tarea> listaTareasGrado = (List<Tarea>) request.getAttribute("listaTareasGrado");
+                            if(request.getAttribute("listaTareasGrado") != null){
+                                for (Tarea objTareaGrado : listaTareasGrado) {
+                        %>
+                            <h5 class="card-title">Curso: <%=objTareaGrado.getNomCurso()%></h5>
+                            <p class="card-text">Mensaje: <%=objTareaGrado.getDescripcion()%> </p>
+                            <%
+                            }
+                            %>
+                        <%    
+                        } else {
+                        %>
+                            <p class="card-text">No tiene tareas </p>
+                        <%    
+                        }
+                        %>
                     </div>
 
                 </div>
                 <br>
-                <div class="card">
-                    <div class="card-header">
-                        INCIDENCIAS EN LOS CURSOS:
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Curso:</h5>
-                        <p class="card-text">Observación: </p>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header">
-                        CITACIONES EN LOS CURSOS:
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Curso:</h5>
-                        <p class="card-text">Tema a tratar: </p>
-                    </div>
-                </div>
+                <%
+                List<Incidencia> listaIncsAlumo = (List<Incidencia>) request.getAttribute("listaIncsAlumo");
+                    if(request.getAttribute("listaIncsAlumo") != null){
+                %>
+                        <div class="card">
+                            <div class="card-header">
+                                INCIDENCIAS EN LOS CURSOS:
+                            </div>
+                            <div class="card-body">
+                                <%
+                                for (Incidencia objIncidenciaAlum : listaIncsAlumo) {
+                                %>
+                                    <h5 class="card-title">Curso: <%=objIncidenciaAlum.getNomCurso()%></h5>
+                                    <p class="card-text">Observación: <%=objIncidenciaAlum.getDescripcion()%> </p>
+                                <%
+                                }
+                                %>
+                            </div>
+                        </div>
+                        <br>
+                <%    
+                    } 
+                %>
                 <br>
             </div>
         </main>
 
         <%@include file="footer.jsp" %>
     </body>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS, Fontawesome -->
-    <script src="Scripts/jquery/jquery-3.5.1.slim.min.js"></script>
-    <script src="Scripts/bootstrap/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/709cccdb82.js" crossorigin="anonymous"></script>
 </html>

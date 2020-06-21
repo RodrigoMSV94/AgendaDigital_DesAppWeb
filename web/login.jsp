@@ -44,10 +44,10 @@
                             </select>
                         </div>
                         <div class="form-group" id="user-group">
-                            <input type="text" class="form-control" name="txtCorreo" placeholder="Correo electrónico">
+                            <input type="text" class="form-control" name="txtCorreo" placeholder="Correo electrónico" required>
                         </div>
                         <div class="form-group" id="contrasena-group">
-                            <input type="password" class="form-control" name="txtContrasena" placeholder="Contraseña">
+                            <input type="password" class="form-control" name="txtContrasena" placeholder="Contraseña" required>
                         </div>
                         <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>  Ingresar</button>
                     </form>

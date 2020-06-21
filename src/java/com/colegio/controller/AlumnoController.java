@@ -21,7 +21,6 @@ public class AlumnoController extends HttpServlet {
     HttpServletResponse response;
     HttpSession session;
     
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.request = request;
@@ -43,10 +42,7 @@ public class AlumnoController extends HttpServlet {
         if(accion != 0){
             vista = accionEnVista(accion);
         }
-        
-        
-        
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher(vista);
         dispatcher.forward(request, response);
     }
