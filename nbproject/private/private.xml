@@ -3,16 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/CitacionController.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/idao/IAsistenciaDAO.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaAsisAlumno.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/model/Asistencia.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/AgendaController.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/AsistenciaAlumnoController.java</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaAlumnos.jsp</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/AlumnoController.java</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/formAlumno.jsp</file>
+            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaCalifAlumno.jsp</file>
             <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaCitacionesAlumno.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/login.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/dao/AsistenciaDAO.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

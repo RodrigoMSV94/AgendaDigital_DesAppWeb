@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "CitacionController", urlPatterns = {"/CitacionController"})
-public class CitacionController extends HttpServlet {
+@WebServlet(name = "CitacionAlumnoController", urlPatterns = {"/CitacionAlumnoController"})
+public class CitacionAlumnoController extends HttpServlet {
     
     HttpServletRequest request;
     HttpServletResponse response;

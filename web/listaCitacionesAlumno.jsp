@@ -24,7 +24,7 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <br>
-                <form action="CitacionController" method="post">
+                <form action="CitacionAlumnoController" method="post">
                     <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
                             Fecha de consulta:
@@ -52,7 +52,7 @@
                 <br>
                 <p class="card-text">Recordar que todas las citaciones son despues de clases </p>
                 <br>
-                 <%
+                <%
                 List<Citacion> listaCitasAlumno = (List<Citacion>) request.getAttribute("listaCitasAlumno");
                     if(listaCitasAlumno.size() > 0){
                 %>

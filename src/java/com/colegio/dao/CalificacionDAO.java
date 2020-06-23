@@ -55,7 +55,7 @@ public class CalificacionDAO implements ICalificacionDAO{
                         resultquery.getInt(2),
                         resultquery.getInt(3),
                         resultquery.getInt(4),
-                        resultquery.getInt(4)
+                        resultquery.getInt(5)
                     )
                 );
             }

@@ -30,7 +30,7 @@
                         <div class="col-auto my-1">
                             Seleccionar periodo escolar:
                             <%
-                                List<PeriodoEscolar> listaPerEscolar = (List<PeriodoEscolar>) session.getAttribute("listaPerEscolar"); 
+                                List<PeriodoEscolar> listaPerEscolar = (List<PeriodoEscolar>)request.getAttribute("listaPerEscolar"); 
                             %>
                             <select class="form-control" id="select-group" name="idPerEscolar" required>
                                 <%
@@ -60,9 +60,9 @@
                 </form>
                 <br>
                 <%
-                List<Calificacion> listaCalifAlumno = (List<Calificacion>) request.getAttribute("listaCalifAlumno");
-                    if(request.getAttribute("listaCalifAlumno") != null){
-                        if(listaCalifAlumno.size() > 0){
+                List<Calificacion> listaCalifAlumno = (List<Calificacion>)request.getAttribute("listaCalifAlumno");
+                    if(request.getAttribute("listaCalifAlumno") != null ){
+                        
                 %>
                         <table class="table">
                             <thead class="thead-dark">
@@ -71,36 +71,29 @@
                                     <th scope="col" class="text-center">Prac. Calificada 1</th>
                                     <th scope="col" class="text-center">Prac. Calificada 2</th>
                                     <th scope="col" class="text-center">Prac. Calificada 3</th>
-                                    <th scope="col" class="text-center">Examen Final</th>
+                                    <th scope="col" class="text-center">Examen Fianl</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <%
-                                    for (Calificacion objCalificacion : listaCalifAlumno) {
+                                    for (Calificacion objCalif : listaCalifAlumno) {
                                 %>
                                 <tr>
-                                    <th scope="row" class="text-center" ><%=objCalificacion.getNomCurso()%></th>
-                                    <td class="text-center"><%=objCalificacion.getPractica_calificada_1()%></td>
-                                    <td class="text-center"><%=objCalificacion.getPractica_calificada_2()%></td>
-                                    <td class="text-center"><%=objCalificacion.getPractica_calificada_3()%></td>
-                                    <td class="text-center"><%=objCalificacion.getExamen_final()%></td>
+                                    <td class="text-center"><%=objCalif.getNomCurso()%></td>
+                                    <td class="text-center"><%=objCalif.getPractica_calificada_1()%></td>
+                                    <td class="text-center"><%=objCalif.getPractica_calificada_2()%></td>
+                                    <th class="text-center"><%=objCalif.getPractica_calificada_3()%></th>
+                                    <th class="text-center"><%=objCalif.getExamen_final()%></th>
                                 </tr>
                                 <%
                                     }
                                 %>
                             </tbody>
                         </table>
-                    <%
-                        } else {
-                    %>
-                            <p class="card-text">En este periodo escolar aun no tiene notas cargas </p>
-                    <%
-                        }
-                    %>
                 <%
                     } else {
                 %>
-                        <p class="card-text">Seleccione un periodo escolar y presiona "Buscar" </p>
+                        <p class="card-text">El alumno aun no tiene notas cargadas de este periodo </p>
                 <%
                     }
                 %>

@@ -12,14 +12,15 @@ import java.sql.SQLException;
 public class LoginDAO implements ILoginDAO{
 
     @Override
-    public Empleado LoginEmpleado(String correo, String contrasena) {
+    public Empleado LoginEmpleado(String correo, String contrasena, int idPerfil) {
         BDConnection objBDConnection = new BDConnection();
         Connection conexion = objBDConnection.conectarconBD();
         Empleado objEmpleado = null;
         try {
-            PreparedStatement pst = conexion.prepareStatement("{call usp_LoginEmpleado(?,?)}");
+            PreparedStatement pst = conexion.prepareStatement("{call usp_LoginEmpleado(?,?,?)}");
             pst.setString(1, correo);
             pst.setString(2, contrasena);
+            pst.setInt(3, idPerfil);
             
             ResultSet res = pst.executeQuery();
             if(res.next()){

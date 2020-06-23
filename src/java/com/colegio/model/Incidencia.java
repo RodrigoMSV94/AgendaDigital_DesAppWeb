@@ -9,6 +9,9 @@ public class Incidencia {
     private String fecha_cita;
     
     private String nomCurso;
+    
+    private String nomAlumno;
+    private String apeAlumno;
 
     public Incidencia(String id_alumno, String id_empleado, String id_curso, String descripcion, String fecha_cita) {
         this.id_alumno = id_alumno;
@@ -22,6 +25,18 @@ public class Incidencia {
         this.nomCurso = nomCurso;
         this.descripcion = descripcion;
     }
+
+    public Incidencia(String id_alumno, String nomAlumno, String apeAlumno, String id_curso, String nomCurso, String descripcion, String fecha_cita) {
+        this.id_alumno = id_alumno;
+        this.descripcion = descripcion;
+        this.fecha_cita = fecha_cita;
+        this.id_curso = id_curso;
+        this.nomCurso = nomCurso;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+    }
+    
+    
 
     public String getId_alumno() {
         return id_alumno;
@@ -69,6 +84,22 @@ public class Incidencia {
 
     public void setNomCurso(String nomCurso) {
         this.nomCurso = nomCurso;
+    }
+
+    public String getNomAlumno() {
+        return nomAlumno;
+    }
+
+    public void setNomAlumno(String nomAlumno) {
+        this.nomAlumno = nomAlumno;
+    }
+
+    public String getApeAlumno() {
+        return apeAlumno;
+    }
+
+    public void setApeAlumno(String apeAlumno) {
+        this.apeAlumno = apeAlumno;
     }
     
 }

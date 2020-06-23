@@ -16,7 +16,7 @@
         <!-- Nuestro css-->
         <link rel="stylesheet" type="text/css" href="Content/css/login.css" th:href="@{Content/css/login.css}">
 
-        <link rel="icon" type="image/jpg" href="Content/img/login-avatar.png">
+        <link rel="icon" type="image/jpg" href="Content/img/icon_carrito.png">
         <title> Colegio - Inicio sesión</title>
     </head>
     <body>

@@ -64,9 +64,9 @@ public class LoginController extends HttpServlet {
         
         int cerrarSesion = Integer.parseInt((request.getParameter("cerrarSesion") != null)?"1":"0");
         if(cerrarSesion == 1 ){
-            request.setAttribute("usuario", null);
-            request.setAttribute("objEmpleado", null);
-            request.setAttribute("objAlumno", null);
+            session.setAttribute("usuario", null);
+            session.setAttribute("objEmpleado", null);
+            session.setAttribute("objAlumno", null);
             vista = "/login.jsp";
         }
         
@@ -89,7 +89,7 @@ public class LoginController extends HttpServlet {
     public boolean existeUsuario(int idPerfil,String correo,String contrasena){
         boolean siExiste = false;
         if(idPerfil == 1 | idPerfil == 2){
-            Empleado objEmpleado = new LoginDAO().LoginEmpleado(correo,contrasena);
+            Empleado objEmpleado = new LoginDAO().LoginEmpleado(correo,contrasena,idPerfil);
             if(objEmpleado != null){
                 session.setAttribute("usuario", objEmpleado);
                 setDatosUsuario(objEmpleado.getId_empleado(),objEmpleado.getDni_empleado(),objEmpleado.getNombre(),objEmpleado.getApellido(),idPerfil);
@@ -133,7 +133,7 @@ public class LoginController extends HttpServlet {
             case 3:
                 opcBarNav.add(new BarraNavegacion("BienvenidaController", "Bienvenida"));
                 opcBarNav.add(new BarraNavegacion("AgendaController", "Agenda"));
-                opcBarNav.add(new BarraNavegacion("CitacionController", "Citaciones"));
+                opcBarNav.add(new BarraNavegacion("CitacionAlumnoController", "Citaciones"));
                 opcBarNav.add(new BarraNavegacion("CalificacionAlumnoController", "Calificaciones"));
                 opcBarNav.add(new BarraNavegacion("#", "Rol Examenes"));
                 opcBarNav.add(new BarraNavegacion("AsistenciaAlumnoController", "Asistencias"));

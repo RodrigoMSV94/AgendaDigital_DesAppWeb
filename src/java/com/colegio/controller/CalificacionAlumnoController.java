@@ -25,12 +25,16 @@ public class CalificacionAlumnoController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    
         this.request = request;
         this.response = response;
         this.session = request.getSession();
         
         session.setAttribute("opcSelect", 4);
+        
+        Alumno alumno = (Alumno)session.getAttribute("usuario");
+        
+        List<Calificacion> listaCalifAlumno = new CalificacionDAO().ListarCalifAlumnoPerEscolar(alumno.getId_alumno(), 1);
+        request.setAttribute("listaCalifAlumno", listaCalifAlumno); 
         
         listarPeriodosEscolar();
         RequestDispatcher dispatcher = request.getRequestDispatcher("/listaCalifAlumno.jsp");
@@ -44,10 +48,11 @@ public class CalificacionAlumnoController extends HttpServlet {
         Alumno alumno = (Alumno)session.getAttribute("usuario");
         
         List<Calificacion> listaCalifAlumno = new CalificacionDAO().ListarCalifAlumnoPerEscolar(alumno.getId_alumno(), idPerEscolar);
-        request.setAttribute("listaCalifAlumno", listaCalifAlumno); 
+        request.setAttribute("listaCalifAlumno", (listaCalifAlumno.size() > 0?listaCalifAlumno:null)); 
         
         request.setAttribute("idPerEscolar", idPerEscolar); 
         
+        listarPeriodosEscolar();
         RequestDispatcher dispatcher = request.getRequestDispatcher("/listaCalifAlumno.jsp");
         dispatcher.forward(request, response);
     }
@@ -59,7 +64,7 @@ public class CalificacionAlumnoController extends HttpServlet {
     
     public List<PeriodoEscolar> listarPeriodosEscolar(){
         List<PeriodoEscolar> listaPerEscolar = new PeriodoEscolarDAO().ListarPeriodosEscolares();
-        session.setAttribute("listaPerEscolar", listaPerEscolar);
+        request.setAttribute("listaPerEscolar", listaPerEscolar);
         return listaPerEscolar;
     }
 }
