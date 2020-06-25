@@ -34,9 +34,7 @@ public class Incidencia {
         this.nomCurso = nomCurso;
         this.nomAlumno = nomAlumno;
         this.apeAlumno = apeAlumno;
-    }
-    
-    
+    } 
 
     public String getId_alumno() {
         return id_alumno;

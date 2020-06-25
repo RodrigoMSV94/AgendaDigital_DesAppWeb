@@ -57,7 +57,7 @@
                     </div>
                 </form>
                 <br>
-                <a class="btn btn-primary" href="IncidenciaController?accion=1"><i class="fas fa-user-plus"></i>  Registrar Incidencia</a>
+                <a class="btn btn-primary" href="IncidenciaController?accion=1"><i class="fas fa-user-plus"></i>  Registrar Citación</a>
                 <br>
                 <br>
                 <%
@@ -113,7 +113,7 @@
                 <%
                     } else {
                 %>
-                        <p class="card-text">El alumno selecciona no tiene incidencia registradas </p>
+                        <p class="card-text">El alumno selecciona no tiene citaciones registradas </p>
                 <%
                     }
                 %>

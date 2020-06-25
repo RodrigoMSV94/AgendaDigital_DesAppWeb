@@ -2,6 +2,7 @@ package com.colegio.dao;
 
 import com.colegio.bd.BDConnection;
 import com.colegio.idao.IIncidenciaDAO;
+import com.colegio.model.Curso;
 import com.colegio.model.Incidencia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

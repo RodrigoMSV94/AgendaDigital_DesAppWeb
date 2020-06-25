@@ -9,12 +9,35 @@ public class Asistencia {
     
     private String nomCurso;
     
+    private String nomAlumno;
+    private String apeAlumno;
+    
+    public Asistencia(){}
+    
     public Asistencia(String id_alumno, String id_curso, String id_grado, int asistio, String fecha_registro) {
         this.id_alumno = id_alumno;
         this.id_curso = id_curso;
         this.id_grado = id_grado;
         this.asistio = asistio;
         this.fecha_registro = fecha_registro;
+    }
+
+    public Asistencia(String id_alumno, String id_curso, String id_grado, int asistio, String fecha_registro, String nomAlumno, String apeAlumno) {
+        this.id_alumno = id_alumno;
+        this.id_curso = id_curso;
+        this.id_grado = id_grado;
+        this.asistio = asistio;
+        this.fecha_registro = fecha_registro;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+    }
+
+    public Asistencia(String id_grado,String id_alumno , String nomAlumno, String apeAlumno, int asistio) {
+        this.id_alumno = id_alumno;
+        this.id_grado = id_grado;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+        this.asistio = asistio;
     }
 
     public Asistencia(String nomCurso, int asistio) {
@@ -71,4 +94,20 @@ public class Asistencia {
         this.nomCurso = nomCurso;
     }
 
+    public String getNomAlumno() {
+        return nomAlumno;
+    }
+
+    public void setNomAlumno(String nomAlumno) {
+        this.nomAlumno = nomAlumno;
+    }
+
+    public String getApeAlumno() {
+        return apeAlumno;
+    }
+
+    public void setApeAlumno(String apeAlumno) {
+        this.apeAlumno = apeAlumno;
+    }
+    
 }

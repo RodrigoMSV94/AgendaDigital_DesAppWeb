@@ -1,13 +1,13 @@
 package com.colegio.controller;
 
 import com.colegio.dao.AlumnoDAO;
-import com.colegio.dao.CursoDAO;
-import com.colegio.dao.IncidenciaDAO;
+import com.colegio.dao.CitacionDAO;
 import com.colegio.model.Alumno;
-import com.colegio.model.Curso;
+import com.colegio.model.Citacion;
 import com.colegio.model.Empleado;
-import com.colegio.model.Incidencia;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "IncidenciaController", urlPatterns = {"/IncidenciaController"})
-public class IncidenciaController extends HttpServlet {
+@WebServlet(name = "CitacionController", urlPatterns = {"/CitacionController"})
+public class CitacionController extends HttpServlet {
     
     HttpServletRequest request;
     HttpServletResponse response;
@@ -30,8 +30,8 @@ public class IncidenciaController extends HttpServlet {
         this.response = response;
         this.session = request.getSession();
         
-        String vista = "/listaIncidencias.jsp";
-        session.setAttribute("opcSelect", 3);
+        String vista = "/listaCitaciones.jsp";
+        session.setAttribute("opcSelect", 4);
         Empleado empleado = (Empleado)session.getAttribute("usuario");
         
         listarAlumnos();
@@ -41,8 +41,8 @@ public class IncidenciaController extends HttpServlet {
         
         vista = accionEnVista(accion);
         
-        List<Incidencia> listaIncidenciasAlum = new IncidenciaDAO().ListarIncDocente(empleado.getId_empleado(),"2020-03-01","2020-12-31");
-        request.setAttribute("listaIncidenciasAlum", listaIncidenciasAlum); 
+        List<Citacion> listaCitasAlumnos = new CitacionDAO().ListarCitasDocente(empleado.getId_empleado(),"2020-03-01","2020-12-31");
+        request.setAttribute("listaCitasAlumnos", listaCitasAlumnos); 
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(vista);
         dispatcher.forward(request, response);
@@ -53,30 +53,30 @@ public class IncidenciaController extends HttpServlet {
         String idAlumno = request.getParameter("idAlumno");
         Empleado empleado = (Empleado)session.getAttribute("usuario");
         
-        String vista = "/listaIncidencias.jsp";
+        String vista = "/listaCitaciones.jsp";
         boolean res = false;
-        String respuesta = "Error al guardar el registro de la incidencia";
+        String respuesta = "Error al guardar el registro de la citación";
         String colorAlert = "danger";
         
         String operacion = (request.getParameter("operacion") != null)?request.getParameter("operacion"):null;
         if(operacion == null){
-            List<Incidencia> listaIncidenciasAlum = new IncidenciaDAO().ListarIncDocenteAlumno(empleado.getId_empleado(),idAlumno,"2020-03-01","2020-12-31");
-            request.setAttribute("listaIncidenciasAlum", listaIncidenciasAlum); 
+            List<Citacion> listaCitasAlumnos = new CitacionDAO().ListarCitDocenAlumno(empleado.getId_empleado(), idAlumno, "2020-03-01","2020-12-31");
+            request.setAttribute("listaCitasAlumnos", listaCitasAlumnos); 
 
             List<Alumno> listaAlumnos = new AlumnoDAO().ListarAlumnos();
             request.setAttribute("listaAlumnos", listaAlumnos); 
 
         }else {
             if(operacion.equals("Registrar")){
-                res = registrarIncidencia(empleado);
-                vista = "/formIncidencia.jsp";
+                res = registrarCitacion(empleado);
+                vista = "/formCitacion.jsp";
             } else {
-                res = actualizarIncidencia(empleado);
-                vista = "/formIncidencia.jsp";
+                res = actualizarCitacion(empleado);
+                vista = "/formCitacion.jsp";
             }
             
             if(res){
-                respuesta = "Se guardó el registro de la incidencia";
+                respuesta = "Se guardó el registro de la citación";
                 colorAlert = "success";
             }
             request.setAttribute("respuesta", respuesta);
@@ -98,68 +98,69 @@ public class IncidenciaController extends HttpServlet {
         request.setAttribute("listaAlumnos", listaAlumnos); 
     }
     
-    public void listarCursos(){
-        List<Curso> listaCursos = new CursoDAO().ListarCursos();
-        request.setAttribute("listaCursos", listaCursos);
-    }
-    
     public String accionEnVista(int accion){
-        String vista = "/listaIncidencias.jsp";
+        String vista = "/listaCitaciones.jsp";
         
         if(accion == 1){
             listarAlumnos();
-            listarCursos();
-            vista = "/formIncidencia.jsp";
-        } else if(accion == 2){
+            vista = "/formCitacion.jsp";
+        }else if(accion == 2){
             String id_alumno = request.getParameter("idAlumno");
-            String id_curso = request.getParameter("idCurso");
-            String fechCita = request.getParameter("fechCita");
-            Incidencia objIncidencia = new IncidenciaDAO().ObtenerIncAlumCurFecha(id_alumno, id_curso, fechCita);
-            request.setAttribute("objIncidencia", objIncidencia);
+            int idCita = Integer.parseInt(request.getParameter("idCita"));
+            
+            Citacion objCitacion = new CitacionDAO().ObtenerCitacion(idCita);
+            request.setAttribute("objCitacion", objCitacion);
             
             listarAlumnos();
-            listarCursos();
             
-            vista = "/formIncidencia.jsp";
+            vista = "/formCitacion.jsp";
         }else if(accion == 3){
             String id_alumno = request.getParameter("idAlumno");
-            String id_curso = request.getParameter("idCurso");
-            String fechCita = request.getParameter("fechCita");
-            boolean resultado = new IncidenciaDAO().EliminarIncAlumCurFecha(id_alumno, id_curso, fechCita);
-            String msgEliminar = "Error al eliminar el registro de la incidencia";
+            int idCita = Integer.parseInt(request.getParameter("idCita"));
+            
+            boolean resultado = new CitacionDAO().EliminarCitacion(idCita);
+            String msgEliminar = "Error al eliminar el registro de la citación";
             if(resultado){
-                msgEliminar = "Se eliminó el registro de la incidencia correctamente";
+                msgEliminar = "Se eliminó el registro de la citación correctamente";
             }
-            vista = "/listaIncidencias.jsp";
+            vista = "/listaCitaciones.jsp";
             request.setAttribute("msgEliminar", msgEliminar);
             listarAlumnos();
         }
         return vista;
     }
     
-    public boolean registrarIncidencia(Empleado empleado){
+    public boolean registrarCitacion(Empleado empleado){
         boolean res = false;
         String id_alumno = request.getParameter("idAlumno");
-        String id_curso = request.getParameter("idCurso");
-        String descripcion = request.getParameter("txtDescripcion");
-        String fecha_cita = request.getParameter("txtFechIncidencia");
-        listarCursos();
-        Incidencia objCurso = new Incidencia(id_alumno, empleado.getId_empleado(), id_curso, descripcion, fecha_cita);
+        String motivo = request.getParameter("txtMotivo");
+        String fecha_cita = request.getParameter("txtFechaCita");
+        String fecha_registro = obtenerFechActual();
         
-        res = new IncidenciaDAO().RegistrarIncidencia(objCurso);
+        Citacion objCitacion = new Citacion(0, id_alumno, empleado.getId_empleado(), motivo, fecha_cita, fecha_registro);
+        
+        res = new CitacionDAO().RegistrarCitacion(objCitacion);
         return res;
     }
     
-    public boolean actualizarIncidencia(Empleado empleado){
+    public boolean actualizarCitacion(Empleado empleado){
         boolean res = false;
+        int id_cita = Integer.parseInt(request.getParameter("txtIdCita"));
         String id_alumno = request.getParameter("idAlumno");
-        String id_curso = request.getParameter("idCurso");
-        String descripcion = request.getParameter("txtDescripcion");
-        String fecha_cita = request.getParameter("txtFechIncidencia");
+        String motivo = request.getParameter("txtMotivo");
+        String fecha_cita = request.getParameter("txtFechaCita");
+        String fecha_registro = obtenerFechActual();
         
-        Incidencia objCurso = new Incidencia(id_alumno, empleado.getId_empleado(), id_curso, descripcion, fecha_cita);
-        listarCursos();
-        res = new IncidenciaDAO().ActualizarIncidencia(objCurso);
+        Citacion objCitacion = new Citacion(id_cita, id_alumno, empleado.getId_empleado(), motivo, fecha_cita, fecha_registro);
+        
+        res = new CitacionDAO().ActualizarCitacion(objCitacion);
         return res;
+    }
+    
+    public String obtenerFechActual(){
+        Date objDate = new Date();
+        SimpleDateFormat objSDF = new SimpleDateFormat("yyyy-MM-dd");
+        String fecha_registro = objSDF.format(objDate);
+        return fecha_registro;
     }
 }

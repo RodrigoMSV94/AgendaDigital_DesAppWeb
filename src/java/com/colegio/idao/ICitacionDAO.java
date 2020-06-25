@@ -13,5 +13,7 @@ public interface ICitacionDAO {
     public Citacion ObtenerCitacion(int id_cita);
     public List<Citacion> ListarCitasAlumno(String id_alumno);
     public List<Citacion> ListarCitasAlumnoFecha(String id_alumno, String fecha_cita);
+    public List<Citacion> ListarCitasDocente(String id_empleado, String fecha_ini, String fecha_fin);
+    public List<Citacion> ListarCitDocenAlumno(String id_empleado, String id_alumno, String fecha_ini, String fecha_fin);
     
 }

@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaAlumnos.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/src/java/com/colegio/controller/AlumnoController.java</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/formAlumno.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaCalifAlumno.jsp</file>
-            <file>file:/D:/Rodrigo/Estudios/Cursos_4/Proyecto_Final/Desarrollo_Web/AgendaDigital_DesAppWeb/web/listaCitacionesAlumno.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

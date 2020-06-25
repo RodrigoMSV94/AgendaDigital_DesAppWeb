@@ -11,6 +11,11 @@ public class Curso {
         this.id_empleado = id_empleado;
     }
 
+    public Curso(String id_curso, String nombre) {
+        this.id_curso = id_curso;
+        this.nombre = nombre;
+    }
+    
     public String getId_curso() {
         return id_curso;
     }

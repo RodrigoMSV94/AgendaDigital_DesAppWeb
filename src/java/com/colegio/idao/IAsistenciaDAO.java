@@ -11,5 +11,7 @@ public interface IAsistenciaDAO {
     public boolean EliminarAsistencia(String id_alumno,String id_curso,String id_grado,String fecha_registro);
     public Asistencia ObtenerAsistencia(String id_alumno,String id_curso,String id_grado,String fecha_registro);
     public List<Asistencia> ListarAsisAlumnoFecha(String id_alumno,String fecha_registro);
+    public List<Asistencia> ObtenerListarAsisGraCurFecha(String id_grado,String id_curso,String fecha_registro);
+    public List<Asistencia> ObtenerListarAsisGra(String id_grado);
     
 }

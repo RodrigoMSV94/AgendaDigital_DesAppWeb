@@ -1,4 +1,5 @@
-<%@page import="com.colegio.model.Incidencia"%>
+<%@page import="com.colegio.model.Citacion"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <br>
-                <form action="IncidenciaController" method="post">
+                <form action="CitacionController" method="post">
                     <div class="form-row justify-content-start form-inline">
                         <div class="col-auto my-1">
                             Seleccionar alumno:
@@ -57,12 +58,12 @@
                     </div>
                 </form>
                 <br>
-                <a class="btn btn-primary" href="IncidenciaController?accion=1"><i class="fas fa-user-plus"></i>  Registrar Citación</a>
+                <a class="btn btn-primary" href="CitacionController?accion=1"><i class="fas fa-user-plus"></i>  Registrar Citacion</a>
                 <br>
                 <br>
                 <%
-                    if(request.getAttribute("msgEliminar") != null){
-                        String msgEliminar = request.getAttribute("msgEliminar").toString();  
+                if(request.getAttribute("msgEliminar") != null){
+                    String msgEliminar = request.getAttribute("msgEliminar").toString();  
                 %>
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong><%=msgEliminar%></strong> 
@@ -74,33 +75,33 @@
                 }
                 %>
                 <%
-                List<Incidencia> listaIncidenciasAlum = (List<Incidencia>)request.getAttribute("listaIncidenciasAlum");
-                    if(listaIncidenciasAlum.size() > 0 ){ 
+                List<Citacion> listaCitasAlumnos = (List<Citacion>)request.getAttribute("listaCitasAlumnos");
+                    if(listaCitasAlumnos.size() > 0 ){ 
                 %>
                         <table class="table">
                             <thead class="thead-dark">
                                 <tr>
                                     <th scope="col" class="text-center">Nombre Alumno</th>
-                                    <th scope="col" class="text-center">Curso</th>
-                                    <th scope="col" class="text-center">Descripción</th>
+                                    <th scope="col" class="text-center">Motivo</th>
                                     <th scope="col" class="text-center">Fecha de incidencia</th>
+                                    <th scope="col" class="text-center">Fecha de registro</th>
                                     <th scope="col" class="text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <%
-                                for (Incidencia objIncidencia : listaIncidenciasAlum) {
+                                for (Citacion objCitacion : listaCitasAlumnos) {
                                 %>
                                     <tr>
-                                        <td class="text-center"><%=objIncidencia.getNomAlumno()%> <%=objIncidencia.getApeAlumno()%></td>
-                                        <td class="text-center"><%=objIncidencia.getNomCurso()%></td>
-                                        <th class="text-center"><%=objIncidencia.getDescripcion()%></th>
-                                        <th class="text-center"><%=objIncidencia.getFecha_cita()%></th>
+                                        <td class="text-center"><%=objCitacion.getNomAlumno()%> <%=objCitacion.getApeAlumno()%></td>
+                                        <td class="text-center"><%=objCitacion.getMotivo()%></td>
+                                        <th class="text-center"><%=objCitacion.getFecha_cita()%></th>
+                                        <th class="text-center"><%=objCitacion.getFecha_registro()%></th>
                                         <td class="text-center">
-                                            <a class="btn btn-info" href="IncidenciaController?accion=2&idAlumno=<%=objIncidencia.getId_alumno()%>&idCurso=<%=objIncidencia.getId_curso()%>&fechCita=<%=objIncidencia.getFecha_cita()%>">
+                                            <a class="btn btn-info" href="CitacionController?accion=2&idAlumno=<%=objCitacion.getId_alumno()%>&idCita=<%=objCitacion.getId_cita()%>">
                                                 <i class="fas fa-pen"></i>  Editar
                                             </a> | 
-                                            <a class="btn btn-danger" href="IncidenciaController?accion=3&idAlumno=<%=objIncidencia.getId_alumno()%>&idCurso=<%=objIncidencia.getId_curso()%>&fechCita=<%=objIncidencia.getFecha_cita()%>">
+                                            <a class="btn btn-danger" href="CitacionController?accion=3&idAlumno=<%=objCitacion.getId_alumno()%>&idCita=<%=objCitacion.getId_cita()%>">
                                                 <i class="fas fa-trash"></i>  Eliminar
                                             </a>
                                         </td>

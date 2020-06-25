@@ -12,6 +12,9 @@ public class Citacion {
     private String nomDocente;
     private String apeDocente;
     
+    private String nomAlumno;
+    private String apeAlumno;
+    
     public Citacion(int id_cita, String id_alumno, String id_empleado, String motivo, String fecha_cita, String fecha_registro) {
         this.id_cita = id_cita;
         this.id_alumno = id_alumno;
@@ -27,7 +30,17 @@ public class Citacion {
         this.motivo = motivo;
         this.fecha_cita = fecha_cita;
     }
-    
+
+    public Citacion(int id_cita, String id_alumno, String nomAlumno, String apeAlumno, String motivo, String fecha_cita, String fecha_registro) {
+        this.id_cita = id_cita;
+        this.id_alumno = id_alumno;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+        this.motivo = motivo;
+        this.fecha_cita = fecha_cita;
+        this.fecha_registro = fecha_registro;
+    }
+
     public int getId_cita() {
         return id_cita;
     }
@@ -90,6 +103,22 @@ public class Citacion {
 
     public void setApeDocente(String apeDocente) {
         this.apeDocente = apeDocente;
+    }
+
+    public String getNomAlumno() {
+        return nomAlumno;
+    }
+
+    public void setNomAlumno(String nomAlumno) {
+        this.nomAlumno = nomAlumno;
+    }
+
+    public String getApeAlumno() {
+        return apeAlumno;
+    }
+
+    public void setApeAlumno(String apeAlumno) {
+        this.apeAlumno = apeAlumno;
     }
     
     
