@@ -12,6 +12,9 @@ public class Calificacion {
     private int id_periodoEscolar;
     
     private String nomCurso;
+    
+    private String nomAlumno;
+    private String apeAlumno;
 
     public Calificacion(String id_alumno, String id_curso, int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final, int promedio, int id_periodoEscolar) {
         this.id_alumno = id_alumno;
@@ -24,7 +27,26 @@ public class Calificacion {
         this.id_periodoEscolar = id_periodoEscolar;
     }
 
-    public Calificacion(String nomCurso,int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final) {
+    public Calificacion(String id_curso, String nomCurso,int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final) {
+        this.id_curso = id_curso;
+        this.nomCurso = nomCurso;
+        this.practica_calificada_1 = practica_calificada_1;
+        this.practica_calificada_2 = practica_calificada_2;
+        this.practica_calificada_3 = practica_calificada_3;
+        this.examen_final = examen_final;
+    }
+
+    public Calificacion(String id_alumno, String nomAlumno, String apeAlumno) {
+        this.id_alumno = id_alumno;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+    }
+    
+    public Calificacion(String id_alumno, String nomAlumno, String apeAlumno,String id_curso, String nomCurso,int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final) {
+        this.id_alumno = id_alumno;
+        this.nomAlumno = nomAlumno;
+        this.apeAlumno = apeAlumno;
+        this.id_curso = id_curso;
         this.nomCurso = nomCurso;
         this.practica_calificada_1 = practica_calificada_1;
         this.practica_calificada_2 = practica_calificada_2;
@@ -103,5 +125,21 @@ public class Calificacion {
     public void setNomCurso(String nomCurso) {
         this.nomCurso = nomCurso;
     }
-    
+
+    public String getNomAlumno() {
+        return nomAlumno;
+    }
+
+    public void setNomAlumno(String nomAlumno) {
+        this.nomAlumno = nomAlumno;
+    }
+
+    public String getApeAlumno() {
+        return apeAlumno;
+    }
+
+    public void setApeAlumno(String apeAlumno) {
+        this.apeAlumno = apeAlumno;
+    }
+
 }

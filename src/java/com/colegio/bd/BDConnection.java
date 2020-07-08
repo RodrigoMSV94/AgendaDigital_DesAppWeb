@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class BDConnection {
     Connection cnx;
     String bd = "bdagendadigitalmysql";
-    String url = "jdbc:mysql://localhost:3308/"+bd;
+    String url = "jdbc:mysql://localhost:3306/"+bd;
     String user = "root";
-    String password = "root";
+    String password = "R20K10G4S8";
     
     public Connection conectarconBD(){
         try {

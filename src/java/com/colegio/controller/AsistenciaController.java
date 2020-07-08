@@ -33,19 +33,18 @@ public class AsistenciaController extends HttpServlet {
         session.setAttribute("opcSelect", 2);
         String id_grado = (request.getParameter("idGrado") != null)?request.getParameter("idGrado"):null;
         System.out.println("id_grado: " + id_grado);
-        System.out.println("Entrea doGet");
         listaGrados();
         
         if(id_grado != null){
             listaCursoGrado(id_grado);
             request.setAttribute("idGrado", id_grado);
+            request.setAttribute("idCurso", "0");
         }else{
             request.setAttribute("listaCursoGrado", null);
             request.setAttribute("idGrado", "0");
             
         }
-        request.setAttribute("idCurso", "0");
-        System.out.println("Entrea doGet");
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/frmAsistencias.jsp");
         dispatcher.forward(request, response);
     }
@@ -84,9 +83,13 @@ public class AsistenciaController extends HttpServlet {
                 System.out.println("selectGrado: " + selectGrado);
                 System.out.println("selectCurso: " + selectCurso);
                 if(operacion.equals("Actualizar")){
+                    System.out.println("idsAlumnos[" + i +"]: " + idsAlumnos[i] + " - selectCurso: " + selectCurso + 
+                                        " - selectGrado: " + selectGrado + " - asistio: " + asistio + " - fecha_registro: " + fecha_registro);
                     res = actualizarAsistencia(idsAlumnos[i], selectCurso, selectGrado, asistio, fecha_registro);
+                    System.out.println("Actualizar: " + res);
                 }else{
                     res = registrarAsistencia(idsAlumnos[i],selectCurso,selectGrado,asistio,fecha_registro);
+                    System.out.println("Registrar: " + res);
                 }
                 
                 if(res){
@@ -118,18 +121,18 @@ public class AsistenciaController extends HttpServlet {
     }
     
     public void listaCursoGrado(String id_grado){
+        System.out.println("Entro a listaCursoGrado");
         List<Curso> listaCursoGrado = new CursoDAO().ListarCursoGrado(id_grado);
         request.setAttribute("listaCursoGrado", listaCursoGrado);
     }
      
     
     public List<Asistencia> listaAsisGraCurFecha(String id_grado, String id_curso){
-        System.out.println("listaAsisGraCurFecha: " + id_grado + " - " + id_curso);
         String fecha_registro = obtenerFechActual();
         request.setAttribute("operacion", "Actualizar");
         List<Asistencia> listaAsisAlumnos = new AsistenciaDAO().ObtenerListarAsisGraCurFecha(id_grado, id_curso, fecha_registro);
+        
         if(listaAsisAlumnos.size() <= 0){ //Esto indica que no existe alguna asistencia ya guardada el día.
-            System.out.println("ObtenerListarAsisGra");
             request.setAttribute("operacion", "Registrar");
             listaAsisAlumnos = new AsistenciaDAO().ObtenerListarAsisGra(id_grado);
         }

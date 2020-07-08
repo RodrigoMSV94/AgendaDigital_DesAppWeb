@@ -128,7 +128,7 @@ public class LoginController extends HttpServlet {
                 opcBarNav.add(new BarraNavegacion("AsistenciaController", "Asistencia"));
                 opcBarNav.add(new BarraNavegacion("IncidenciaController", "Incidencia"));
                 opcBarNav.add(new BarraNavegacion("CitacionController", "Citación"));
-                opcBarNav.add(new BarraNavegacion("RegNotasController", "Registro de notas"));
+                opcBarNav.add(new BarraNavegacion("CalificacionController", "Registro de notas"));
                 break;
             case 3:
                 opcBarNav.add(new BarraNavegacion("BienvenidaController", "Bienvenida"));

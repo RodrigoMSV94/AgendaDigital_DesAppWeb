@@ -4,6 +4,7 @@ $('#selectGrado').change(function(){
     //var gradoSelect = $("#selectGrado").val();
     
     urlCarCurso += "idGrado=" + gradoSelect;
+    alert("gradoSelect: " + gradoSelect);
     location.assign(urlCarCurso);
 });
 

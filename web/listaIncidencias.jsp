@@ -31,6 +31,7 @@
                             List<Alumno> listaAlumnos = (List<Alumno>)request.getAttribute("listaAlumnos"); 
                             %>
                             <select class="form-control" id="select-group" name="idAlumno" required>
+                                <option value="A" selected>Selecciona un alumno</option>
                                 <%
                                 for (Alumno objAlum : listaAlumnos) {
                                     String idAlumno = (String)request.getAttribute("idAlumno");
@@ -57,7 +58,7 @@
                     </div>
                 </form>
                 <br>
-                <a class="btn btn-primary" href="IncidenciaController?accion=1"><i class="fas fa-user-plus"></i>  Registrar Citación</a>
+                <a class="btn btn-primary" href="IncidenciaController?accion=1"><i class="far fa-plus-square"></i>  Registrar Incidencia</a>
                 <br>
                 <br>
                 <%

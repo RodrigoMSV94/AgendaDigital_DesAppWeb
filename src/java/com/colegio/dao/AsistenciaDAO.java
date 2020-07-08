@@ -58,7 +58,7 @@ public class AsistenciaDAO implements IAsistenciaDAO{
             objBDConnection.desconectarBD();
             
         } catch (SQLException ex) {
-            
+            System.out.println("Exception: " + ex.getMessage());
         }
         return rpta;
     }
@@ -116,10 +116,8 @@ public class AsistenciaDAO implements IAsistenciaDAO{
                         resultquery.getString(1),
                         resultquery.getString(2),
                         resultquery.getString(3),
-                        resultquery.getInt(4),
-                        resultquery.getString(5),
-                        resultquery.getString(6),
-                        resultquery.getString(7)
+                        resultquery.getString(4),
+                        resultquery.getInt(5)
                     )
                 );
             }

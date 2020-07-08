@@ -13,9 +13,10 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="Content/bootstrap/bootstrap.min.css">
-
+        <script src="Scripts/jquery/jquery-3-5-1.js" type="text/javascript"></script>
+        
         <!-- Nuestro css-->
-        <link rel="stylesheet" type="text/css" href="Content/css/estilos.css" th:href="@{Content/css/estilos.css}">
+        <link rel="stylesheet" type="text/css" href="Content/css/estilos.css" th:href="@{Content/css/estilos.css}">    
         <link rel="icon" type="image/jpg" href="Content/img/login-avatar.png">
         <title>Colegio</title>
     </head>
@@ -70,7 +71,7 @@
                                         if(idCurso.equals(objCurso.getId_curso())){
                                     %>
                                            
-                                        <option value="<%=objCurso.getId_curso()%>" selected=""><%=objCurso.getNombre()%></option>
+                                            <option value="<%=objCurso.getId_curso()%>" selected=""><%=objCurso.getNombre()%></option>
                                         <%
                                         } else {
                                         %>
@@ -154,6 +155,7 @@
                 
             </div>
         </main>
+        <script src="Scripts/jswebapp/frmAsistencias.js" type="text/javascript"></script>
         <%@include file="footer.jsp" %>
     </body>
 </html>
