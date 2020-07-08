@@ -42,7 +42,7 @@ public class Calificacion {
         this.apeAlumno = apeAlumno;
     }
     
-    public Calificacion(String id_alumno, String nomAlumno, String apeAlumno,String id_curso, String nomCurso,int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final) {
+    public Calificacion(String id_alumno, String nomAlumno, String apeAlumno,int practica_calificada_1, int practica_calificada_2, int practica_calificada_3, int examen_final) {
         this.id_alumno = id_alumno;
         this.nomAlumno = nomAlumno;
         this.apeAlumno = apeAlumno;

@@ -12,7 +12,7 @@ public interface ICalificacionDAO {
     public Calificacion ObtenerCalificacion(String id_alumno,String id_curso);
     public List<Calificacion> ListarCalifAlumnoPerEscolar(String id_alumno,int id_periodoEscolar);
     public List<Calificacion> ObtenerListarAlumGrado(String id_grado);
-    public List<Calificacion> ListarCalifAlum(String id_alumno,int id_periodoEscolar);
+    public List<Calificacion> ListarCalifAlum(String id_grado, String id_alumno, int id_periodoEscolar);
     public List<Calificacion> ObtenerCalifAlumGrado(String id_grado,String id_alumno);
     
 }

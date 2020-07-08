@@ -136,7 +136,60 @@
                 </form>
                 <br>
                 <br>
-                
+                <%
+                List<Calificacion> listaCalifAlumno = (List<Calificacion>)request.getAttribute("listaCalifAlumno");
+                if(request.getAttribute("listaCalifAlumno")!= null){ 
+                %>
+                    <table class="table" id="tabla">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="text-center">Código Alumno</th>
+                                <th scope="col" class="text-center">Nombre Alumno</th>
+                                <th scope="col" class="text-center">Pract. Calificada 1</th>
+                                <th scope="col" class="text-center">Pract. Calificada 2</th>
+                                <th scope="col" class="text-center">Pract. Calificada 3</th>
+                                <th scope="col" class="text-center">Exam. Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%
+                            for (Calificacion objCalificacion : listaCalifAlumno) {
+                            %>
+                                <tr>
+                                    
+                                    <td class="text-center"><%=objCalificacion.getId_alumno()%> </td>
+                                    <td class="text-center"><%=objCalificacion.getNomAlumno()%> <%=objCalificacion.getApeAlumno()%></td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control pc1" value="<%=objCalificacion.getPractica_calificada_1()%>">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control pc2" value="<%=objCalificacion.getPractica_calificada_2()%>">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control pc3" value="<%=objCalificacion.getPractica_calificada_3()%>">
+                                    </td>
+                                    <td class="text-center">
+                                        <input type="text" class="form-control exf" value="<%=objCalificacion.getExamen_final()%>">
+                                    </td>
+                                </tr>
+                            <%
+                            } 
+                            %>
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="form-row justify-content-start form-inline">
+                        <div class="col-auto my-1 ml-auto">
+                            <button type="button" class="btn btn-success" id="btnGuardarCal"><i class="far fa-save"></i>  Guardar</button>
+                        </div>
+                    </div>
+                <%
+                } else {
+                %>
+                    <p class="card-text">Seleccione el grado, curso y periodo escolar para buscar registros de notas. </p>
+                <%
+                }
+                %>
             </div>
         </main>
         <script src="Scripts/jswebapp/frmCalificacion.js" type="text/javascript"></script>
