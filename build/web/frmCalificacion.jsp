@@ -151,7 +151,7 @@
                                 <th scope="col" class="text-center">Exam. Final</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             <%
                             for (Calificacion objCalificacion : listaCalifAlumno) {
                             %>
@@ -159,16 +159,18 @@
                                     
                                     <td class="text-center"><%=objCalificacion.getId_alumno()%> </td>
                                     <td class="text-center"><%=objCalificacion.getNomAlumno()%> <%=objCalificacion.getApeAlumno()%></td>
-                                    <td class="text-center">
-                                        <input type="text" class="form-control pc1" value="<%=objCalificacion.getPractica_calificada_1()%>">
+                                    <td class="text-center col-md-2" >
+                                            <input type="text" class="form-control pc1" value="<%=objCalificacion.getPractica_calificada_1()%>">
+                                       
+                                        
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center col-md-2">
                                         <input type="text" class="form-control pc2" value="<%=objCalificacion.getPractica_calificada_2()%>">
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center col-md-2">
                                         <input type="text" class="form-control pc3" value="<%=objCalificacion.getPractica_calificada_3()%>">
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center col-md-2">
                                         <input type="text" class="form-control exf" value="<%=objCalificacion.getExamen_final()%>">
                                     </td>
                                 </tr>
