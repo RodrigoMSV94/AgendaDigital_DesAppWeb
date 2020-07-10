@@ -3,9 +3,9 @@ $('#selectGradoCal').change(function(){
     var gradoSelect = $("#selectGradoCal").val();
     var urlCarCurso = "http://localhost:8084/AgendaDigital/CalificacionController?";
     //var gradoSelect = $("#selectGrado").val();
-    
+
     urlCarCurso += "idGrado=" + gradoSelect;
-    alert("idGrado: " + gradoSelect)
+
     location.assign(urlCarCurso);
 });
 
@@ -22,7 +22,7 @@ $(document).on("click","#btnGuardarCal",function(){
 
     $("#tabla tbody tr").each(function (index) {
         var idAlumno,nomAlumno,pc1,pc2,pc3,exfinal;
-        
+
         $(this).children("td").each(function (index2) {
             switch (index2) {
                 case 0:
@@ -34,9 +34,9 @@ $(document).on("click","#btnGuardarCal",function(){
                     nomsAlumnos.push(nomAlumno);
                     break;   
             }
-        })
-    })
-    
+        });
+    });
+
     $("tr").each(function() {
         var pc1 = $(this).find("input.pc1").val(); 
         notaPc1s.push(pc1);
@@ -46,34 +46,34 @@ $(document).on("click","#btnGuardarCal",function(){
         var pc2 = $(this).find("input.pc2").val(); 
         notaPc2s.push(pc2);
     });
-    
+
     $("tr").each(function() {
         var pc3 = $(this).find("input.pc3").val(); 
         notaPc3s.push(pc3);
     });
-    
+
     $("tr").each(function() {
         var exfinal = $(this).find("input.exf").val(); 
         notaExFins.push(exfinal);
     });
-    
+
     var n1 = notaPc1s.filter(Boolean);
     var n2 = notaPc2s.filter(Boolean);
     var n3 = notaPc3s.filter(Boolean);
     var nef = notaExFins.filter(Boolean);
-    
+
     notaPc1s = n1;
     notaPc2s = n2;
     notaPc3s = n3;
     notaExFins = nef;
 
-    alert(idsAlumnos);
-    alert(nomsAlumnos);
-    alert(notaPc1s);
-    alert(notaPc2s);
-    alert(notaPc3s);
-    alert(notaExFins);
-    
+    //alert(idsAlumnos);
+    //alert(nomsAlumnos);
+    //alert(notaPc1s);
+    //alert(notaPc2s);
+    //alert(notaPc3s);
+    //alert(notaExFins);
+    alert("Se guardo las calificaciones correctamente");
     $.ajax({
         type:"POST",
         url:"/AgendaDigital/CalificacionController",
@@ -81,7 +81,9 @@ $(document).on("click","#btnGuardarCal",function(){
         data: {idsAlumnos:idsAlumnos,notaPc1s:notaPc1s,notaPc2s:notaPc2s,notaPc3s:notaPc3s,notaExFins:notaExFins,selectTrimestre:selectTrimestre,selectCurso:selectCurso,operacion:operacion},
         success:function(data){
             alert(data);
-        },
+        }
     });    
 
 });
+
+

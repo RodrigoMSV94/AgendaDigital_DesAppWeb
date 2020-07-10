@@ -34,9 +34,11 @@ public class CalificacionController extends HttpServlet {
         
         String id_grado = (request.getParameter("idGrado") != null)?request.getParameter("idGrado"):null;
         listaGrados();
+        request.setAttribute("listaGrados", new GradoDAO().ListarGrado());   
         
         if(id_grado != null){
             //Llamamos para llevar el combo alumnos
+            
             listaCursoGrado(id_grado);
             listarPeriodosEscolar();
             request.setAttribute("idGrado", id_grado);

@@ -1,12 +1,8 @@
 $('#selectGrado').change(function(){
     var gradoSelect = $("#selectGrado").val();
-    var urlCarCurso = "http://localhost:8084/AgendaDigital/AsistenciaController?";
-    //var gradoSelect = $("#selectGrado").val();
-    
-    urlCarCurso += "idGrado=" + gradoSelect;
-    alert("gradoSelect: " + gradoSelect);
+    var urlCarCurso = "http://localhost:8084/AgendaDigital/AsistenciaController?" + "idGrado=" + gradoSelect;
     location.assign(urlCarCurso);
-});
+})
 
 
 $(document).on("click","#btnGuardar",function(){
@@ -44,10 +40,7 @@ $(document).on("click","#btnGuardar",function(){
             asis = "0";
         }
         asisAlumnos.push(asis);
-    });
-    alert(idsAlumnos);
-    alert(nomsAlumnos);
-    alert(asisAlumnos);
+    })
 
     $.ajax({
         type:"POST",

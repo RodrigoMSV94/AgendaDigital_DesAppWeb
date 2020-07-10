@@ -56,6 +56,7 @@ public class AsistenciaController extends HttpServlet {
         System.out.println("id_curso: " + id_curso);
         if(id_grado != null && id_curso != null){
             request.setAttribute("listaAsisAlumnos", listaAsisGraCurFecha(id_grado,id_curso));
+            System.out.println("Entro aqui 123");
         }
         
         listaGrados();
@@ -94,6 +95,10 @@ public class AsistenciaController extends HttpServlet {
                 
                 if(res){
                     System.out.println("Si grabo");
+                    if(selectGrado != null && selectCurso != null){
+                        request.setAttribute("listaAsisAlumnos", listaAsisGraCurFecha(selectGrado,selectCurso));
+                        System.out.println("Entro aqui 476");
+                    }
                 }else{
                     System.out.println("No grabo");
                 }
@@ -104,7 +109,7 @@ public class AsistenciaController extends HttpServlet {
         catch(Exception e){
             System.out.println("null");
         }
-        System.out.println("Sale dopost");
+        System.out.println("Sale dopost----------------------------");
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/frmAsistencias.jsp");
         dispatcher.forward(request, response);
