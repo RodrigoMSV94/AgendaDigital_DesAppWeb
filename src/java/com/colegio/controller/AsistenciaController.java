@@ -82,41 +82,23 @@ public class AsistenciaController extends HttpServlet {
             selectCurso = request.getParameter("selectCurso");
             String operacion = request.getParameter("operacion");
             String fecha_registro = obtenerFechActual();
-            for(int i = 0; i < idsAlumnos.length; i++)
-            {
+            for(int i = 0; i < idsAlumnos.length; i++){
                 int asistio = Integer.parseInt(asisAlumnos[i]);
-                System.out.println("idsAlumnos[i]: " + idsAlumnos[i]);
-                System.out.println("nomsAlumnos[i]: " + nomsAlumnos[i]);
-                System.out.println("asisAlumnos[i]: " + asistio);
-                System.out.println("selectGrado: " + selectGrado);
-                System.out.println("selectCurso: " + selectCurso);
                 if(operacion.equals("Actualizar")){
-                    System.out.println("idsAlumnos[" + i +"]: " + idsAlumnos[i] + " - selectCurso: " + selectCurso + 
-                                        " - selectGrado: " + selectGrado + " - asistio: " + asistio + " - fecha_registro: " + fecha_registro);
                     res = actualizarAsistencia(idsAlumnos[i], selectCurso, selectGrado, asistio, fecha_registro);
-                    System.out.println("Actualizar: " + res);
                 }else{
                     res = registrarAsistencia(idsAlumnos[i],selectCurso,selectGrado,asistio,fecha_registro);
-                    System.out.println("Registrar: " + res);
                 }
                 
                 if(res){
-                    System.out.println("Si grabo");
-                    if(selectGrado != null && selectCurso != null){
+                    if(selectGrado != null && selectCurso != null)
                         request.setAttribute("listaAsisAlumnos", listaAsisGraCurFecha(selectGrado,selectCurso));
-                        System.out.println("Entro aqui 476");
-                    }
-                }else{
-                    System.out.println("No grabo");
                 }
             }
-            
-            
         }
         catch(Exception e){
-            System.out.println("Asistencia - null");
+            System.out.println("Error en asistencia: " + e.getMessage());
         }
-        System.out.println("Sale dopost----------------------------");
         
         try{
             //Bloque de grabado para Tarea
@@ -126,7 +108,7 @@ public class AsistenciaController extends HttpServlet {
             String operTarea = request.getParameter("operTarea");
             registrarTarea(empleado.getId_empleado(),selectCurso,selectGrado,descripcionTarea,operTarea);
         }catch(Exception e){
-            System.out.println("Tarea - null");
+            System.out.println("Error en Tarea: " + e.getMessage());
         }
         
         
