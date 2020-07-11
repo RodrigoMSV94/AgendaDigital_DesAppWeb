@@ -31,7 +31,7 @@ $(document).on("click","#btnGuardar",function(){
             }
         })
     })
-    
+    alert("Se registro la asistencia con exito");
     $("input[type=checkbox]").each(function(){
         if (this.checked) {
 
@@ -55,6 +55,21 @@ $(document).on("click","#btnGuardar",function(){
 
 });
 
-
-
-
+$(document).on("click","#btnTarea",function(){
+    
+    //var descripTarea = $("#txtDesTarea").text();
+    var descripcionTarea = $("#txtDesTarea").val();
+    var selectGrado = document.getElementById("selectGrado").value;
+    var selectCurso = document.getElementById("selectCurso").value;
+    var operTarea = $("#operTarea").val();
+    alert("Se agrega la tarea con exitó");
+    $.ajax({
+        type:"POST",
+        url:"/AgendaDigital/AsistenciaController",
+        dataType:"json",
+        data: {descripcionTarea:descripcionTarea,selectGrado:selectGrado,selectCurso:selectCurso,operTarea:operTarea},
+        success:function(data){
+            alert(data);
+        }
+    }); 
+});

@@ -79,11 +79,11 @@
                                     for (Calificacion objCalif : listaCalifAlumno) {
                                 %>
                                 <tr>
-                                    <td class="text-center"><%=objCalif.getNomCurso()%></td>
+                                    <th class="text-center"><%=objCalif.getNomCurso()%></td>
                                     <td class="text-center"><%=objCalif.getPractica_calificada_1()%></td>
                                     <td class="text-center"><%=objCalif.getPractica_calificada_2()%></td>
-                                    <th class="text-center"><%=objCalif.getPractica_calificada_3()%></th>
-                                    <th class="text-center"><%=objCalif.getExamen_final()%></th>
+                                    <td class="text-center"><%=objCalif.getPractica_calificada_3()%></td>
+                                    <td class="text-center"><%=objCalif.getExamen_final()%></td>
                                 </tr>
                                 <%
                                     }

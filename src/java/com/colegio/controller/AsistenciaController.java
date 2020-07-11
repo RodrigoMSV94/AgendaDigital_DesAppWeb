@@ -3,9 +3,12 @@ package com.colegio.controller;
 import com.colegio.dao.AsistenciaDAO;
 import com.colegio.dao.CursoDAO;
 import com.colegio.dao.GradoDAO;
+import com.colegio.dao.TareaDAO;
 import com.colegio.model.Asistencia;
 import com.colegio.model.Curso;
+import com.colegio.model.Empleado;
 import com.colegio.model.Grado;
+import com.colegio.model.Tarea;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -42,6 +45,7 @@ public class AsistenciaController extends HttpServlet {
         }else{
             request.setAttribute("listaCursoGrado", null);
             request.setAttribute("idGrado", "0");
+            request.setAttribute("objTarea", null);
             
         }
 
@@ -51,11 +55,13 @@ public class AsistenciaController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Empleado empleado = (Empleado)session.getAttribute("usuario");
         String id_grado = (request.getParameter("idGrado") != null)?request.getParameter("idGrado"):null;
         String id_curso = (request.getParameter("txtIdCurso") != null)?request.getParameter("txtIdCurso"):null;
         System.out.println("id_curso: " + id_curso);
         if(id_grado != null && id_curso != null){
             request.setAttribute("listaAsisAlumnos", listaAsisGraCurFecha(id_grado,id_curso));
+            obtenerTarea(id_curso,id_grado);
             System.out.println("Entro aqui 123");
         }
         
@@ -65,14 +71,15 @@ public class AsistenciaController extends HttpServlet {
         request.setAttribute("idCurso", id_curso);
         
         System.out.println("Entrea dopost");
-
+        String selectGrado = "";
+        String selectCurso = "";
         boolean res = false;
         try{
             String[] idsAlumnos = request.getParameterValues("idsAlumnos[]");
             String[] nomsAlumnos = request.getParameterValues("nomsAlumnos[]");
             String[] asisAlumnos = request.getParameterValues("asisAlumnos[]");
-            String selectGrado = request.getParameter("selectGrado");
-            String selectCurso = request.getParameter("selectCurso");
+            selectGrado = request.getParameter("selectGrado");
+            selectCurso = request.getParameter("selectCurso");
             String operacion = request.getParameter("operacion");
             String fecha_registro = obtenerFechActual();
             for(int i = 0; i < idsAlumnos.length; i++)
@@ -107,9 +114,23 @@ public class AsistenciaController extends HttpServlet {
             
         }
         catch(Exception e){
-            System.out.println("null");
+            System.out.println("Asistencia - null");
         }
         System.out.println("Sale dopost----------------------------");
+        
+        try{
+            //Bloque de grabado para Tarea
+            String descripcionTarea = request.getParameter("descripcionTarea");
+            selectGrado = request.getParameter("selectGrado");
+            selectCurso = request.getParameter("selectCurso");
+            String operTarea = request.getParameter("operTarea");
+            registrarTarea(empleado.getId_empleado(),selectCurso,selectGrado,descripcionTarea,operTarea);
+        }catch(Exception e){
+            System.out.println("Tarea - null");
+        }
+        
+        
+        
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("/frmAsistencias.jsp");
         dispatcher.forward(request, response);
@@ -123,6 +144,19 @@ public class AsistenciaController extends HttpServlet {
     public void listaGrados(){
         List<Grado> listaGrados = new GradoDAO().ListarGrado();
         request.setAttribute("listaGrados", listaGrados);
+    }
+    
+    public void obtenerTarea(String id_curso,String id_grado){
+        System.out.println("id_curso: " + id_curso + " - " + "id_grado: " + id_grado);
+        String fechaRegistro = obtenerFechActual();
+        Tarea objTarea = null;
+        objTarea = new TareaDAO().ObtenerTarea(id_curso, id_grado,fechaRegistro);
+        if(objTarea != null){
+            request.setAttribute("operTarea", "Actualiza");
+        }else{
+            request.setAttribute("operTarea", "Registra");
+        }
+        request.setAttribute("objTarea", objTarea);
     }
     
     public void listaCursoGrado(String id_grado){
@@ -163,10 +197,35 @@ public class AsistenciaController extends HttpServlet {
     
     public boolean actualizarAsistencia(String id_alumno, String id_curso, String id_grado, int asistio, String fecha_registro){
         boolean res = false;
-        
+
         Asistencia objAsistencia = new Asistencia(id_alumno, id_curso, id_grado, asistio, fecha_registro);
         res = new AsistenciaDAO().ActualizarAsistencia(objAsistencia);
         
         return res;
     }
+    
+    public boolean registrarTarea(String Id_empleado,String selectCurso,String selectGrado,String descripcionTarea, String operTarea){
+        System.out.println("registrarTarea 11121e3321: " + operTarea);
+        boolean res = false;
+        String fechRegistro = obtenerFechActual();
+        Tarea objTarea1 = new TareaDAO().ObtenerTarea(selectCurso, selectGrado,fechRegistro);
+        if(objTarea1 != null){
+            Tarea objTarea = new Tarea(Id_empleado, selectCurso, selectGrado, descripcionTarea, fechRegistro);
+            res = new TareaDAO().ActualizarTarea(objTarea);
+        }else{
+            Tarea objTarea = new Tarea(Id_empleado, selectCurso, selectGrado, descripcionTarea, fechRegistro);
+            res = new TareaDAO().RegistrarTarea(objTarea); 
+        }
+        
+        
+//        if(operTarea.equals("Registra")){
+//           res = new TareaDAO().RegistrarTarea(objTarea); 
+//        }else{
+//           res = new TareaDAO().ActualizarTarea(objTarea);
+//        }
+        
+        System.out.println(operTarea + " Tarea?: " + res);
+        return res;
+    }
+
 }

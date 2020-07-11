@@ -1,3 +1,4 @@
+<%@page import="com.colegio.model.Tarea"%>
 <%@page import="com.colegio.model.Asistencia"%>
 <%@page import="com.colegio.model.Curso"%>
 <%@page import="com.colegio.model.Grado"%>
@@ -25,7 +26,8 @@
         <main role="main" class="flex-shrink-0">
             <div class="container">
                 <%
-                String operacion = (String)request.getAttribute("operacion"); 
+                String operacion = (String)request.getAttribute("operacion");
+                String operTarea = (String)request.getAttribute("operTarea");
                 %>
                 <input type="hidden" id="operacion" name="operacion" value="<%=operacion%>"/>
                 <br>
@@ -145,6 +147,35 @@
                             <button type="button" class="btn btn-success" id="btnGuardar"><i class="far fa-save"></i>  Guardar</button>
                         </div>
                     </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-header">
+                            Descripción de tarea:
+                        </div>
+                        <div class="card-body">
+                                <input type="hidden" id="operTarea" name="operTarea" value="<%=operTarea%>"/>
+                            <%
+                            if(request.getAttribute("objTarea")!= null){ 
+                                Tarea objTarea = (Tarea)request.getAttribute("objTarea");
+                            %>
+                                <input type="text" class="form-control" id="txtDesTarea" name="txtDesTarea" value="<%=objTarea.getDescripcion()%>">
+                            <%
+                            }else{
+                            %>
+                                <input type="text" class="form-control" id="txtDesTarea" name="txtDesTarea">
+                            <%
+                            }
+                            %>
+                            
+                            <br>
+                            <div class="col-auto my-1 ml-auto">
+                                <button type="button" class="btn btn-info" id="btnTarea"><i class="far fa-save"></i>  Agregar Tarea</button>
+                            </div>
+                        </div>
+                        <br> 
+                    </div>
+                    <br> 
+                    
                 <%
                 } else {
                 %>
@@ -155,6 +186,7 @@
                 
             </div>
         </main>
+               
         <script src="Scripts/jswebapp/frmAsistencias.js" type="text/javascript"></script>
         <%@include file="footer.jsp" %>
     </body>

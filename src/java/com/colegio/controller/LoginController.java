@@ -117,11 +117,11 @@ public class LoginController extends HttpServlet {
             case 1:
                 opcBarNav.add(new BarraNavegacion("BienvenidaController", "Bienvenida"));
                 opcBarNav.add(new BarraNavegacion("AlumnoController", "Alumnos"));
-                opcBarNav.add(new BarraNavegacion("#", "Matriculas"));
-                opcBarNav.add(new BarraNavegacion("#", "Docentes"));
-                opcBarNav.add(new BarraNavegacion("#", "Gestiones Academicas"));
-                opcBarNav.add(new BarraNavegacion("#", "Pensiones"));
-                opcBarNav.add(new BarraNavegacion("#", "Control de usuarios"));
+                //opcBarNav.add(new BarraNavegacion("#", "Matriculas"));
+                //opcBarNav.add(new BarraNavegacion("#", "Docentes"));
+                //opcBarNav.add(new BarraNavegacion("#", "Gestiones Academicas"));
+                //opcBarNav.add(new BarraNavegacion("#", "Pensiones"));
+                //opcBarNav.add(new BarraNavegacion("#", "Control de usuarios"));
                 break;
             case 2:
                 opcBarNav.add(new BarraNavegacion("BienvenidaController", "Bienvenida"));
@@ -135,10 +135,10 @@ public class LoginController extends HttpServlet {
                 opcBarNav.add(new BarraNavegacion("AgendaController", "Agenda"));
                 opcBarNav.add(new BarraNavegacion("CitacionAlumnoController", "Citaciones"));
                 opcBarNav.add(new BarraNavegacion("CalificacionAlumnoController", "Calificaciones"));
-                opcBarNav.add(new BarraNavegacion("#", "Rol Examenes"));
+                //opcBarNav.add(new BarraNavegacion("#", "Rol Examenes"));
                 opcBarNav.add(new BarraNavegacion("AsistenciaAlumnoController", "Asistencias"));
-                opcBarNav.add(new BarraNavegacion("#", "Horario"));
-                opcBarNav.add(new BarraNavegacion("#", "Pensiones"));
+                //opcBarNav.add(new BarraNavegacion("#", "Horario"));
+                //opcBarNav.add(new BarraNavegacion("#", "Pensiones"));
                 break;
         }
         return opcBarNav;
